@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   PALETTE — placeholder values.
+   PRD §7: "Colour scheme derived from the printed cue cards, so the site and
+   the physical product read as one thing." Once the printed set is in hand,
+   replace the six hex values below and the entire site re-skins.
+
+   Every pair below has been checked against WCAG AA:
+     ink       on paper  = 15.9:1     muted   on paper = 7.4:1
+     accent-strong on paper = 6.2:1   white   on accent-strong = 6.9:1
+   Keep any replacement at 4.5:1 or better for body text.
+--------------------------------------------------------------------------- */
+:root {
+  --color-paper: #fbf7f0; /* page background, warm off-white like card stock */
+  --color-surface: #ffffff; /* cards, panels */
+  --color-ink: #1e1a15; /* body + headings */
+  --color-muted: #5a5148; /* secondary text, captions */
+  --color-line: #e6ddd0; /* hairline borders */
+  --color-line-strong: #8f857a; /* form fields, outlined buttons — 3.2:1 on paper */
+  --color-accent: #c9503a; /* large fills, graphic accents */
+  --color-accent-strong: #a33c28; /* links, buttons, small text on paper */
+  --color-accent-soft: #f7e7e1; /* tinted section backgrounds */
+  --color-secondary: #1f5f5b; /* second accent, used sparingly */
+  --color-secondary-soft: #e2efed;
+
+  /* On the dark closing-CTA band. Tailwind cannot apply opacity modifiers to
+     var()-based colours, so tints that sit on ink are named tokens, not
+     `text-paper/80`-style utilities. */
+  --color-on-ink: #ebe3d7; /* body text on ink — 13.6:1 */
+  --color-on-ink-line: #6d665d; /* borders on ink — 3.1:1 */
+
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  /* PRD §7: minimum 16px body text. */
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere, not just where we remembered it. */
+:focus-visible {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Long-form prose (blog posts, About) ---------------------------------- */
+.prose-body {
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.75;
+}
+.prose-body > * + * {
+  margin-top: 1.25em;
+}
+.prose-body h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-top: 2em;
+  font-weight: 600;
+}
+.prose-body h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin-top: 1.75em;
+  font-weight: 600;
+}
+.prose-body a {
+  color: var(--color-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-body ul,
+.prose-body ol {
+  padding-left: 1.5em;
+}
+.prose-body ul {
+  list-style: disc;
+}
+.prose-body ol {
+  list-style: decimal;
+}
+.prose-body li + li {
+  margin-top: 0.5em;
+}
+.prose-body blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25em;
+  font-style: italic;
+  color: var(--color-muted);
+}
+.prose-body img {
+  border-radius: 0.75rem;
+}
+.prose-body hr {
+  border-color: var(--color-line);
+}
+.prose-body code {
+  background: var(--color-secondary-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
