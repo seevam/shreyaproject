@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { isTodo } from "@content/site";
+import { cardsPage, isTodo } from "@content/site";
 
 export function Container({
   children,
@@ -24,13 +24,14 @@ export function Section({
 }: {
   children: ReactNode;
   id?: string;
-  tone?: "paper" | "soft" | "secondary";
+  tone?: "paper" | "soft" | "secondary" | "sun";
   className?: string;
 }) {
   const tones = {
     paper: "bg-paper",
     soft: "bg-accent-soft",
     secondary: "bg-secondary-soft",
+    sun: "bg-sun-soft",
   } as const;
 
   return (
@@ -61,7 +62,7 @@ export function SectionHeading({
       ) : null}
       <h2
         id={id}
-        className="font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl"
+        className="font-display text-3xl font-semibold leading-tight text-navy sm:text-4xl"
       >
         {children}
       </h2>
@@ -83,7 +84,7 @@ export function ButtonLink({
 }) {
   const styles =
     variant === "primary"
-      ? "bg-accent-strong text-white hover:bg-ink"
+      ? "bg-navy text-white hover:bg-accent-strong"
       : "border border-line-strong bg-surface text-ink hover:border-muted";
 
   return (
@@ -158,5 +159,54 @@ export function ImageFrameAware({
       aspect={aspect}
       placeholderLabel={placeholderLabel}
     />
+  );
+}
+
+
+/**
+ * The coloured dot in the corner of every card: purple for the grown-up
+ * decks, yellow for the child's. Always rendered beside a text label — the
+ * yellow is only 1.6:1 against the page, so colour alone never carries the
+ * meaning, and the navy ring keeps the shape visible.
+ */
+export function Dot({
+  kind,
+  className = "",
+}: {
+  kind: "grownup" | "child";
+  className?: string;
+}) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`inline-block h-4 w-4 shrink-0 rounded-full border-2 border-navy ${
+        kind === "grownup" ? "bg-grownup" : "bg-sun"
+      } ${className}`}
+    />
+  );
+}
+
+/** The two card sets side by side: what each dot means. */
+export function DotKey({ className = "" }: { className?: string }) {
+  const sets = [
+    { kind: "grownup", ...cardsPage.grownUp },
+    { kind: "child", ...cardsPage.child },
+  ] as const;
+
+  return (
+    <ul className={`grid gap-4 sm:grid-cols-2 ${className}`}>
+      {sets.map((set) => (
+        <li
+          key={set.kind}
+          className="rounded-card border border-line bg-surface p-5"
+        >
+          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.1em] text-muted">
+            <Dot kind={set.kind} />
+            {set.label} · {set.audience}
+          </p>
+          <p className="mt-2 text-base leading-relaxed text-ink">{set.body}</p>
+        </li>
+      ))}
+    </ul>
   );
 }

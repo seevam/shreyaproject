@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
     <article className="py-16 sm:py-24">
       <Container>
         <div className="max-w-prose">
-          <h1 className="font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+          <h1 className="font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">
             Blog
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ink">

@@ -17,7 +17,7 @@ export function SiteHeader() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <Link
           href="/"
-          className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl"
+          className="font-display text-lg font-semibold leading-tight text-navy sm:text-xl"
         >
           {site.name}
         </Link>
@@ -34,7 +34,7 @@ export function SiteHeader() {
           ))}
           <Link
             href="/feedback/"
-            className="rounded-full bg-accent-strong px-5 py-2 text-base font-semibold text-white transition-colors hover:bg-ink"
+            className="rounded-full bg-navy px-5 py-2 text-base font-semibold text-white transition-colors hover:bg-accent-strong"
           >
             Share feedback
           </Link>

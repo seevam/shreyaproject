@@ -8,7 +8,8 @@ import {
   testimonials,
   testimonialsSection,
 } from "@content/site";
-import { ButtonLink, Container, ImageFrame, Section, SectionHeading } from "@/components/ui";
+import { instructionCard } from "@content/cards";
+import { ButtonLink, Container, DotKey, ImageFrame, Section, SectionHeading } from "@/components/ui";
 import { Copy, Placeholder } from "@/components/Copy";
 
 type Item = { title: string; body: string };
@@ -33,7 +34,7 @@ function PointCard({ item, index }: { item: Item; index: number }) {
       <Copy
         as="h3"
         text={item.title}
-        className="font-display text-xl font-semibold text-ink"
+        className="font-display text-xl font-semibold text-navy"
       />
       <div className="mt-2 text-base leading-relaxed text-muted">
         <Copy text={item.body} />
@@ -44,7 +45,7 @@ function PointCard({ item, index }: { item: Item; index: number }) {
 
 export function ProblemSection() {
   return (
-    <Section id="problem" tone="soft">
+    <Section id="problem" tone="sun">
       <SectionHeading eyebrow="Why this exists">{problem.heading}</SectionHeading>
 
       <div className="mt-6 max-w-prose text-lg leading-relaxed text-ink">
@@ -65,16 +66,51 @@ export function SolutionSection() {
     <Section id="solution">
       <SectionHeading eyebrow="What they are">{solution.heading}</SectionHeading>
 
-      <div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
-        <div className="max-w-prose text-lg leading-relaxed text-ink">
-          <Copy text={solution.lead} />
+      <div className="mt-6 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-14">
+        <div>
+          <div className="max-w-prose text-lg leading-relaxed text-ink">
+            <Copy text={solution.lead} />
+          </div>
+          <DotKey className="mt-8" />
         </div>
-        <ImageFrame
-          alt="The printed cue card set"
-          aspect="aspect-[4/3]"
-          placeholderLabel="Photograph of the printed set"
-        />
+
+        <figure className="mx-auto w-full max-w-[260px]">
+          {/* A plain <img>: one hand-placed card image. */}
+          <img
+            src={instructionCard.src}
+            alt={instructionCard.alt}
+            width={212}
+            height={310}
+            className="h-auto w-full drop-shadow-[0_10px_16px_rgba(23,35,63,0.22)]"
+          />
+          <figcaption className="mt-3 text-center text-sm text-muted">
+            One of six instruction cards at the front of every packet.
+          </figcaption>
+        </figure>
       </div>
+
+      <h3 className="mt-16 font-display text-2xl font-semibold text-navy">
+        {solution.stepsHeading}
+      </h3>
+      <ol className="mt-5 grid gap-5 md:grid-cols-3">
+        {solution.steps.map((step, i) => (
+          <li
+            key={step.title}
+            className="rounded-card border border-line bg-surface p-6"
+          >
+            <span
+              aria-hidden="true"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-navy font-display text-lg font-semibold text-white"
+            >
+              {i + 1}
+            </span>
+            <h4 className="mt-3 font-display text-xl font-semibold text-navy">
+              {step.title}
+            </h4>
+            <p className="mt-2 text-base leading-relaxed text-muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
 
       <ul className="mt-10 grid gap-5 sm:grid-cols-2">
         {solution.features.map((feature, i) => (
@@ -82,9 +118,10 @@ export function SolutionSection() {
         ))}
       </ul>
 
-      <div className="mt-8">
-        <ButtonLink href="/cards/" variant="secondary">
-          See the card set
+      <div className="mt-8 flex flex-wrap gap-3">
+        <ButtonLink href="/cards/">See the card set</ButtonLink>
+        <ButtonLink href="/cards/#how-to-use" variant="secondary">
+          How to use them
         </ButtonLink>
       </div>
     </Section>
@@ -115,7 +152,7 @@ export function ImpactSection() {
               </span>
             </div>
 
-            <h3 className="mt-3 font-display text-xl font-semibold leading-snug text-ink">
+            <h3 className="mt-3 font-display text-xl font-semibold leading-snug text-navy">
               {item.title}
             </h3>
 
@@ -153,7 +190,7 @@ export function ImpactSection() {
 
 export function TestimonialsSection() {
   return (
-    <Section id="testimonials">
+    <Section id="testimonials" tone="soft">
       <SectionHeading eyebrow="From people who used them">
         {testimonialsSection.heading}
       </SectionHeading>
@@ -192,25 +229,25 @@ export function TestimonialsSection() {
 
 export function ClosingCta() {
   return (
-    <section className="bg-ink py-16 sm:py-20">
+    <section className="bg-navy py-16 sm:py-20">
       <Container>
         <div className="max-w-prose">
           <h2 className="font-display text-3xl font-semibold leading-tight text-paper sm:text-4xl">
             {closingCta.heading}
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-on-ink">
+          <p className="mt-4 text-lg leading-relaxed text-on-dark">
             {closingCta.body}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href={closingCta.primary.href}
-              className="inline-flex items-center justify-center rounded-full bg-paper px-6 py-3 text-base font-semibold text-ink transition-colors hover:bg-accent-soft"
+              className="inline-flex items-center justify-center rounded-full bg-paper px-6 py-3 text-base font-semibold text-navy transition-colors hover:bg-sun"
             >
               {closingCta.primary.label}
             </Link>
             <Link
               href={closingCta.secondary.href}
-              className="inline-flex items-center justify-center rounded-full border border-on-ink-line px-6 py-3 text-base font-semibold text-paper transition-colors hover:border-paper"
+              className="inline-flex items-center justify-center rounded-full border border-on-dark-line px-6 py-3 text-base font-semibold text-paper transition-colors hover:border-paper"
             >
               {closingCta.secondary.label}
             </Link>

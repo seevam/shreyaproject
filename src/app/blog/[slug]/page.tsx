@@ -56,7 +56,7 @@ export default async function BlogPostPage({
             </Link>
           </p>
 
-          <h1 className="mt-3 font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">
             {post.title}
           </h1>
 

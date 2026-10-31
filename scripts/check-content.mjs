@@ -59,7 +59,6 @@ for (const todo of todos) {
 // Empty collections that the site needs filled before launch.
 const empties = [
   [/export const testimonials:[^=]*=\s*\[\s*\]/, "testimonials — none published yet (at least 3 needed)"],
-  [/gallery: \[\] as/, "cardsPage.gallery — no card photographs added yet"],
 ];
 const found = empties.filter(([re]) => re.test(code)).map(([, label]) => label);
 

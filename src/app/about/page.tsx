@@ -14,7 +14,7 @@ export default function AboutPage() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
           <div className="max-w-prose">
-            <h1 className="font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+            <h1 className="font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">
               {about.title}
             </h1>
 
@@ -22,12 +22,19 @@ export default function AboutPage() {
               <Copy text={about.lead} />
             </div>
 
-            <h2 className="mt-12 font-display text-2xl font-semibold text-ink">
+            <h2 className="mt-12 font-display text-2xl font-semibold text-navy">
               {about.whereItsHeaded.heading}
             </h2>
             <div className="prose-body mt-4 text-ink">
               <Copy text={about.whereItsHeaded.body} />
             </div>
+
+            <h2 className="mt-12 font-display text-2xl font-semibold text-navy">
+              {about.creditsHeading}
+            </h2>
+            <p className="prose-body mt-4 text-ink">
+              Words by {site.credits.words}. Design by {site.credits.design}.
+            </p>
           </div>
 
           <aside className="lg:pt-4">

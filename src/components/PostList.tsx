@@ -26,7 +26,7 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
             </Link>
           </p>
 
-          <h2 className="mt-2 font-display text-2xl font-semibold leading-snug text-ink">
+          <h2 className="mt-2 font-display text-2xl font-semibold leading-snug text-navy">
             <Link href={`/blog/${post.slug}/`} className="hover:text-accent-strong">
               {post.title}
             </Link>

@@ -88,7 +88,7 @@ export function FeedbackForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center rounded-full bg-accent-strong px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-ink disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-full bg-navy px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-strong disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : feedback.submitLabel}
       </button>

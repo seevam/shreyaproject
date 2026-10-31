@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#fbf7f0"/>
-  <g transform="rotate(-10 26 34)">
-    <rect x="12" y="16" width="26" height="34" rx="5" fill="#f7e7e1" stroke="#c9503a" stroke-width="2.5"/>
+  <rect width="64" height="64" rx="14" fill="#11468f"/>
+  <g transform="rotate(-9 24 36)">
+    <rect x="10" y="14" width="26" height="36" rx="5" fill="#fff1bf"/>
+    <circle cx="16" cy="20" r="3" fill="#febc0d" stroke="#11468f" stroke-width="1.5"/>
   </g>
-  <g transform="rotate(9 40 32)">
-    <rect x="27" y="13" width="26" height="34" rx="5" fill="#ffffff" stroke="#a33c28" stroke-width="2.5"/>
-    <rect x="33" y="22" width="14" height="3" rx="1.5" fill="#a33c28"/>
-    <rect x="33" y="29" width="10" height="3" rx="1.5" fill="#a33c28" opacity="0.55"/>
+  <g transform="rotate(8 42 34)">
+    <rect x="28" y="12" width="26" height="36" rx="5" fill="#ffffff"/>
+    <circle cx="34" cy="18" r="3" fill="#a666f5" stroke="#11468f" stroke-width="1.5"/>
+    <rect x="33" y="34" width="16" height="4" rx="2" fill="#f252b4"/>
+    <rect x="33" y="41" width="11" height="3" rx="1.5" fill="#11468f" opacity="0.4"/>
   </g>
 </svg>

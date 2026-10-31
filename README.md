@@ -96,24 +96,36 @@ requirement, and it is enforced by there being no automatic path at all.
 
 ## Design
 
-**Colours** are six hex values at the top of `src/app/globals.css`. They are
-placeholders until the printed cards are in hand; replacing them re-skins the
-entire site, because no colour is hard-coded in a component.
+**Colours** are CSS variables at the top of `src/app/globals.css`, sampled from
+the Signal Cards' Canva deck: the cards' navy for headings, hot pink for
+labels, the purple "grown-up" dot, the yellow "child" dot. No colour is
+hard-coded in a component, so a change there re-skins the whole site.
 
-Every pair has been checked for contrast. Keep any replacement at 4.5:1 or
-better against its background for text, and 3:1 for borders and controls.
+Each brand colour comes in two roles. The raw pink (3.1:1) and yellow (1.6:1)
+fail WCAG as text on a light page, so they are used for fills and graphics
+only, and a darkened pink is used for text and links. The dots always sit
+beside a text label, never carrying meaning by colour alone. Keep any
+replacement at 4.5:1 or better for text, 3:1 for borders and controls.
 
 **Typefaces** are Fraunces for headings and Inter for body — two, per the PRD.
 They are set in `src/app/layout.tsx` and self-hosted at build time, so the
 browser never calls Google.
 
-**Images.** There are none yet. Photographs go in `public/images/`, and are
-referenced from `content/site.ts` (`hero.image`, `about.photo`,
-`cardsPage.gallery`, `impact.items[].photos`). Anywhere a photograph is
-missing, a labelled placeholder frame holds its shape.
+**Images.** The 20 card fronts in `public/images/cards/` and the instruction
+card in `public/images/brand/` come from the Canva deck. They were cropped from
+the 536px page thumbnails the Canva connector returns, so each is about 212 x
+310px: fine at the sizes used here, slightly soft on high-density screens. To
+sharpen them, export the card pages from Canva at full size, crop the card
+front, and overwrite the files **keeping the same filenames** — no code change
+needed. Only card *fronts* are used, never the backs that carry the guidance
+text, and there are no downloadable card files anywhere (PRD §5.4).
 
-Per PRD §5.4 there are no downloadable card files anywhere on the site, only
-images.
+The card list, names and alt text live in `content/cards.ts`; the gallery, the
+hero and every "20 cards / 10 cards" figure are derived from it.
+
+Still empty: `about.photo`, `hero.photo` (optional, replaces the card fan) and
+`impact.items[].photos` — they hold their shape with a labelled placeholder
+frame until a photograph is added.
 
 ---
 
@@ -133,20 +145,36 @@ canonical URLs, the sitemap and the social preview card all read from it.
 
 ---
 
+## Where the copy came from
+
+Most of the landing page and the whole cards page were filled in from the
+Signal Cards Canva deck, in Shreya's own wording where the deck already says
+it: the product name, what the cards are, the problem, the how-a-set-works
+steps, the features, and the full "how to use them" guide. Places where the
+deck was adapted rather than copied are marked `Adapted:` in
+`content/site.ts` so she can check them.
+
+The deck says nothing about the nonprofit, the Bangkok competition, the
+research paper, or her own story, so none of that is invented — those stay as
+visible "To write" boxes.
+
 ## Decisions still needed
 
 `npm run content:todo` lists the copy. These are the ones that are not just
 copy:
 
-- **The product name.** PRD §7 leaves it open, and the site name follows it.
-  `site.name` currently reads "The Cue Cards Initiative" as a working title —
-  it is a real string rather than a placeholder only because it appears in the
-  browser tab and the nav, where an amber box would make the site unreviewable.
-  Change `name` and `shortName` in `content/site.ts` once it is decided.
-- **Whether a sample card can be shown in full**, given the copyright caution
-  from the 19 June session. Until that is settled, the cards page has no
-  images.
+- **Confirm the product name.** `site.name` is now "The Signal Cards", taken
+  from the deck's title and the cards' own text. PRD §7 left it open, so
+  change `name` and `shortName` in `content/site.ts` if it is revisited.
+- **Whether the card fronts may be public.** PRD §5.4 flags a copyright
+  caution from the 19 June session. Only fronts are shown, but an amber note on
+  the cards page stays until Shreya confirms; delete `cardsPage.note` then.
+- **Why existing options fall short, and how often the problem occurs.** PRD
+  §2 asks for both; the deck covers neither.
+- **Who Anisha Kochar is, if a line about her is wanted.** She is credited for
+  design, exactly as on the last instruction card.
 - **The contact email** for the footer.
 - **The guest author's name** for the "A note for new parents" post, which
   currently credits "Guest post".
 - **The launch date**, which the PRD notes must precede application submission.
+- **The domain.** `site.url` is a placeholder.

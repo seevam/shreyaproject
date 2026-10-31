@@ -8,6 +8,18 @@ export const contentType = "image/png";
 export const alt = site.name;
 
 export default function OpengraphImage() {
+  const dot = (fill: string) => (
+    <div
+      style={{
+        width: "44px",
+        height: "44px",
+        borderRadius: "22px",
+        background: fill,
+        border: "5px solid #11468f",
+      }}
+    />
+  );
+
   return new ImageResponse(
     (
       <div
@@ -17,40 +29,25 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#fbf7f0",
+          background: "#fffbf3",
           padding: "72px",
           fontFamily: "Georgia, serif",
         }}
       >
         <div style={{ display: "flex", gap: "18px" }}>
-          <div
-            style={{
-              width: "96px",
-              height: "132px",
-              borderRadius: "12px",
-              background: "#f7e7e1",
-              border: "4px solid #c9503a",
-              transform: "rotate(-8deg)",
-            }}
-          />
-          <div
-            style={{
-              width: "96px",
-              height: "132px",
-              borderRadius: "12px",
-              background: "#ffffff",
-              border: "4px solid #a33c28",
-              transform: "rotate(6deg)",
-            }}
-          />
+          {dot("#a666f5")}
+          {dot("#febc0d")}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: "72px", color: "#1e1a15", lineHeight: 1.1 }}>
+          <div style={{ fontSize: "88px", color: "#11468f", lineHeight: 1.05 }}>
             {site.name}
           </div>
-          <div style={{ marginTop: "24px", fontSize: "32px", color: "#5a5148" }}>
-            {`An independent initiative by ${site.founder.name}`}
+          <div style={{ marginTop: "24px", fontSize: "34px", color: "#4b587a" }}>
+            {`A visual cue deck for children, and the adults who want to understand them`}
+          </div>
+          <div style={{ marginTop: "20px", fontSize: "28px", color: "#c0187f" }}>
+            {`By ${site.founder.name}`}
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export function SiteFooter() {
       <Container>
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div className="max-w-sm">
-            <p className="font-display text-lg font-semibold text-ink">
+            <p className="font-display text-lg font-semibold text-navy">
               {site.name}
             </p>
             <p className="mt-2 text-base text-muted">{footer.blurb}</p>
@@ -48,8 +48,9 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-10 border-t border-line pt-6 text-sm text-muted">
-          © {year} {site.founder.name}. The cue cards and their contents remain
-          the work of their author.
+          © {year} {site.founder.name}. Words by {site.credits.words}, design by{" "}
+          {site.credits.design}. The cards and their contents remain the work of
+          their authors.
         </p>
       </Container>
     </footer>

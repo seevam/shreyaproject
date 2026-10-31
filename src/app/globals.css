@@ -3,34 +3,50 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------------------------------
-   PALETTE — placeholder values.
+   PALETTE — sampled from the Signal Cards' Canva deck.
    PRD §7: "Colour scheme derived from the printed cue cards, so the site and
-   the physical product read as one thing." Once the printed set is in hand,
-   replace the six hex values below and the entire site re-skins.
+   the physical product read as one thing."
 
-   Every pair below has been checked against WCAG AA:
-     ink       on paper  = 15.9:1     muted   on paper = 7.4:1
-     accent-strong on paper = 6.2:1   white   on accent-strong = 6.9:1
-   Keep any replacement at 4.5:1 or better for body text.
+   Brand colours as they appear on the cards:
+     navy headings #11468F · hot-pink labels #F252B4 · grown-up (purple) dot
+     #A666F5 · child (yellow) dot #FEBC0D · orange pill #EB842A · lime #90C50F
+
+   Two of those fail WCAG as TEXT on a light page (pink 3.1:1, yellow 1.6:1),
+   so each brand colour comes in two roles:
+     fill   — large areas and graphics (--color-accent, --color-sun, ...)
+     strong — darkened to pass 4.5:1, for small text, links and buttons
+   Never put a "fill" colour behind or under small text.
+
+   Checked pairs (WCAG ratios):
+     ink on paper 15.1 · navy on paper 8.9 · muted on paper 6.8
+     white on navy 9.1 · accent-strong on paper 5.5 · secondary on paper 6.8
+     on-dark on navy 7.8 · control borders (line-strong) 3.4 on paper
 --------------------------------------------------------------------------- */
 :root {
-  --color-paper: #fbf7f0; /* page background, warm off-white like card stock */
-  --color-surface: #ffffff; /* cards, panels */
-  --color-ink: #1e1a15; /* body + headings */
-  --color-muted: #5a5148; /* secondary text, captions */
-  --color-line: #e6ddd0; /* hairline borders */
-  --color-line-strong: #8f857a; /* form fields, outlined buttons — 3.2:1 on paper */
-  --color-accent: #c9503a; /* large fills, graphic accents */
-  --color-accent-strong: #a33c28; /* links, buttons, small text on paper */
-  --color-accent-soft: #f7e7e1; /* tinted section backgrounds */
-  --color-secondary: #1f5f5b; /* second accent, used sparingly */
-  --color-secondary-soft: #e2efed;
+  --color-paper: #fffbf3; /* page background, warm like card stock */
+  --color-surface: #ffffff; /* cards, panels, inputs */
+  --color-ink: #17233f; /* body text */
+  --color-navy: #11468f; /* headings and primary buttons — the cards' blue */
+  --color-muted: #4b587a; /* secondary text, captions */
+  --color-line: #eadfcb; /* hairline borders */
+  --color-line-strong: #7e88a6; /* form fields, outlined buttons (3:1+) */
 
-  /* On the dark closing-CTA band. Tailwind cannot apply opacity modifiers to
-     var()-based colours, so tints that sit on ink are named tokens, not
-     `text-paper/80`-style utilities. */
-  --color-on-ink: #ebe3d7; /* body text on ink — 13.6:1 */
-  --color-on-ink-line: #6d665d; /* borders on ink — 3.1:1 */
+  --color-accent: #f252b4; /* brand pink — FILLS ONLY, fails as text */
+  --color-accent-strong: #c0187f; /* pink for links, eyebrows, small text */
+  --color-accent-soft: #fde6f3; /* pink-tinted section background */
+
+  --color-secondary: #7a2fc0; /* purple for text — "grown-up" side */
+  --color-secondary-soft: #f0e6fb; /* purple-tinted section background */
+  --color-grownup: #a666f5; /* the purple dot — FILL / graphic only */
+
+  --color-sun: #febc0d; /* the yellow dot — FILL / graphic only */
+  --color-sun-soft: #fff1bf; /* yellow-tinted section background */
+
+  /* Text and borders on the dark navy band. Tailwind cannot apply opacity
+     modifiers to var()-based colours, so these are named tokens rather than
+     `text-white/80`-style utilities (which silently generate no CSS). */
+  --color-on-dark: #e6eefb;
+  --color-on-dark-line: #8fb0e0;
 
   color-scheme: light;
 }
@@ -71,6 +87,7 @@ body {
   margin-top: 1.25em;
 }
 .prose-body h2 {
+  color: var(--color-navy);
   font-family: var(--font-display), Georgia, serif;
   font-size: 1.5rem;
   line-height: 1.3;
@@ -78,6 +95,7 @@ body {
   font-weight: 600;
 }
 .prose-body h3 {
+  color: var(--color-navy);
   font-family: var(--font-display), Georgia, serif;
   font-size: 1.25rem;
   line-height: 1.35;
