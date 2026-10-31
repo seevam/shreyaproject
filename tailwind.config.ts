@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * Colours are declared once as CSS custom properties in src/app/globals.css,
- * sampled from the Signal Cards deck. Edit the hex values THERE and the whole
+ * sampled from the cards' Canva deck. Edit the hex values THERE and the whole
  * site follows. Do not hard-code colours in components.
  */
 const config: Config = {

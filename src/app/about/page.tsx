@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Quote } from "lucide-react";
 import { about, site } from "@content/site";
 import { Container, ImageFrameAware, Sticker } from "@/components/ui";
-import { Copy } from "@/components/Copy";
+import { Copy, IfWritten } from "@/components/Copy";
 import { Reveal } from "@/components/motion";
 
 export const metadata: Metadata = {
@@ -44,18 +44,22 @@ export default function AboutPage() {
               </figure>
             </Reveal>
 
-            <div className="prose-body mt-10 text-ink">
-              <Copy text={about.originGap} />
-            </div>
-
-            <Reveal>
-              <h2 className="mt-14 font-display text-3xl font-semibold text-navy">
-                {about.whereItsHeaded.heading}
-              </h2>
-              <div className="prose-body mt-4 text-ink">
-                <Copy text={about.whereItsHeaded.body} />
+            <IfWritten text={about.originGap}>
+              <div className="prose-body mt-10 text-ink">
+                <Copy text={about.originGap} />
               </div>
-            </Reveal>
+            </IfWritten>
+
+            <IfWritten text={about.whereItsHeaded.body}>
+              <Reveal>
+                <h2 className="mt-14 font-display text-3xl font-semibold text-navy">
+                  {about.whereItsHeaded.heading}
+                </h2>
+                <div className="prose-body mt-4 text-ink">
+                  <Copy text={about.whereItsHeaded.body} />
+                </div>
+              </Reveal>
+            </IfWritten>
 
             <Reveal>
               <h2 className="mt-14 font-display text-3xl font-semibold text-navy">

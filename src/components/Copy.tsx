@@ -2,12 +2,17 @@ import { createElement, type ReactNode } from "react";
 import { TODO_CLOSE, TODO_OPEN, isTodo } from "@content/site";
 
 /**
- * Renders a string from content/site.ts.
- *
- * If the string is still a todo() placeholder it is drawn as a visible amber
- * box naming what is needed, rather than silently printing «TODO: ...» into
- * the page. That way an unfinished section is obvious in review and cannot be
- * mistaken for finished copy.
+ * Unwritten todo() copy is HIDDEN by default, so the live site shows only
+ * finished content. Set NEXT_PUBLIC_SHOW_PLACEHOLDERS=1 (in .env.local, or in
+ * the hosting environment for a preview) to draw each one as an amber
+ * "To write" box instead — useful while writing. `npm run content:todo` lists
+ * them either way.
+ */
+export const showPlaceholders = process.env.NEXT_PUBLIC_SHOW_PLACEHOLDERS === "1";
+
+/**
+ * Renders a string from content/site.ts. A todo() placeholder renders as
+ * nothing, or as an amber box when placeholders are switched on.
  */
 export function Copy({
   text,
@@ -26,8 +31,9 @@ function stripMarkers(text: string): string {
   return text.trim().slice(TODO_OPEN.length, -TODO_CLOSE.length).trim();
 }
 
-/** The amber "still to write" box. */
+/** The amber "still to write" box. Renders nothing unless placeholders are on. */
 export function Placeholder({ note }: { note: string }) {
+  if (!showPlaceholders) return null;
   return (
     <div
       role="note"
@@ -52,7 +58,7 @@ export function IfWritten({
   text: string;
   children: ReactNode;
 }) {
-  if (isTodo(text)) return null;
+  if (isTodo(text) && !showPlaceholders) return null;
   return <>{children}</>;
 }
 

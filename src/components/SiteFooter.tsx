@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footer, isTodo, site } from "@content/site";
 import { Container, Dot, Wave } from "@/components/ui";
+import { liveFooterLinks } from "@/lib/visibility";
 import { Placeholder } from "@/components/Copy";
 
 export function SiteFooter() {
@@ -22,7 +23,7 @@ export function SiteFooter() {
 
           <nav aria-label="Footer">
             <ul className="flex flex-col gap-2">
-              {footer.links.map((link) => (
+              {liveFooterLinks().map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

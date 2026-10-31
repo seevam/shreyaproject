@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import clsx from "clsx";
-import { nav, site } from "@content/site";
+import { site } from "@content/site";
 
 /** "/about/" and "/about" are the same page. */
 const norm = (path: string) => path.replace(/\/+$/, "") || "/";
@@ -25,7 +25,9 @@ function LogoMark() {
   );
 }
 
-export function SiteHeader() {
+type NavItem = { href: string; label: string };
+
+export function SiteHeader({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -46,7 +48,7 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          {nav.map((item) => {
+          {items.map((item) => {
             const active = norm(pathname) === norm(item.href);
             return (
               <Link
@@ -94,7 +96,7 @@ export function SiteHeader() {
             className="overflow-hidden border-t-2 border-navy bg-paper md:hidden"
           >
             <ul className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-4 sm:px-8">
-              {[...nav, { href: "/feedback/", label: "Share feedback" }].map((item, i) => (
+              {[...items, { href: "/feedback/", label: "Share feedback" }].map((item, i) => (
                 <motion.li
                   key={item.href}
                   initial={{ x: -16, opacity: 0 }}

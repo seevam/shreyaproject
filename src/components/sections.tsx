@@ -36,6 +36,7 @@ import {
 } from "@/components/ui";
 import { Copy, Placeholder } from "@/components/Copy";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { blogIsLive } from "@/lib/visibility";
 
 type Item = { title: string; body: string };
 
@@ -362,6 +363,7 @@ export function TestimonialsSection() {
 }
 
 export function ClosingCta() {
+  const secondary = blogIsLive() ? closingCta.secondary : { label: "See the cards", href: "/cards/" };
   return (
     <section className="relative overflow-hidden bg-navy py-24 sm:py-28">
       <Wave tone="navy" />
@@ -384,8 +386,8 @@ export function ClosingCta() {
             <ButtonLink href={closingCta.primary.href} variant="sun" arrow>
               {closingCta.primary.label}
             </ButtonLink>
-            <ButtonLink href={closingCta.secondary.href} variant="secondary">
-              {closingCta.secondary.label}
+            <ButtonLink href={secondary.href} variant="secondary">
+              {secondary.label}
             </ButtonLink>
           </div>
         </Reveal>

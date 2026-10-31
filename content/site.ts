@@ -11,8 +11,8 @@
  * impossible to publish by accident. Run `npm run content:todo` for the list.
  *
  * SOURCE OF THE FILLED-IN COPY. Where the text below is real rather than a
- * todo(), it comes from the Signal Cards Canva deck ("The Signal Cards", 38
- * pages), in Shreya's own wording wherever the deck already says it. Places
+ * todo(), it comes from the cards' Canva deck (38 pages), in Shreya's own
+ * wording wherever the deck already says it. Places
  * where it is adapted rather than lifted are marked "Adapted:" so she can
  * check them. Nothing is invented about the nonprofit, the competition, the
  * paper, or how often the problem occurs — the deck does not cover those.
@@ -34,32 +34,21 @@ export const isTodo = (value: string) => value.trimStart().startsWith(TODO_OPEN)
 
 export const site = {
   /**
-   * PRODUCT / SITE NAME. PRD §7 left this open ("the site name will match the
-   * product name"). The Canva deck is titled "The Signal Cards" and the cards
-   * refer to themselves by that name, so it is used here. BUT the Project
-   * Diary export calls the same cards "Communicate & Connect". The artwork is
-   * identical, so these look like two names for one product.
-   *
-   * EVIDENCE THAT MAY SETTLE IT: in the 31 July 2026 deployment photo
-   * public/images/field/printed-box.webp, the PRINTED BOX reads
-   * "Communicate & Connect". The Canva deck was last edited 11 June 2026, so
-   * the printed product post-dates it. The site and the physical product are
-   * meant to read as one thing (PRD §7), which points to Communicate &
-   * Connect. Not switched without Shreya's say-so: the hero and Solution copy
-   * are lifted from the deck and say "The Signal Cards are...", and would need
-   * a pass. Change `name` and `shortName` here, then those two sentences.
+   * PRODUCT / SITE NAME: Communicate & Connect, confirmed by the user and
+   * matching the printed box. (An earlier Canva draft used a different
+   * working name; it no longer appears anywhere on the site.)
    */
-  name: "The Signal Cards",
-  shortName: "Signal Cards",
+  name: "Communicate & Connect",
+  shortName: "Communicate & Connect",
 
   /** Used for meta descriptions and the social preview card. */
   description:
-    "The Signal Cards are a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better. Designed by Shreya Kochar.",
+    "Communicate & Connect is a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better. Designed by Shreya Kochar.",
 
   /** Set this to the final domain before launch. Used for canonical + OG URLs. */
-  url: "https://signalcards.example.com",
+  url: "https://communicateandconnect.example.com",
 
-  contactEmail: todo("contact email for the footer"),
+  contactEmail: "connectwithshreyakochar@gmail.com",
 
   founder: {
     name: "Shreya Kochar",
@@ -101,9 +90,9 @@ export const hero = {
   title: "Every brain works in its own way",
   /** Words in the title drawn with a marker-pen highlight. */
   titleHighlight: "its own way",
-  /** Lifted from the Welcome card. */
+  /** Lifted from the Welcome card, with the product name updated. */
   description:
-    "The Signal Cards are a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better.",
+    "Communicate & Connect is a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better.",
   /** The PRD's own example label. */
   ctaLabel: "See how the cards work",
   ctaHref: "/cards/#how-to-use",
@@ -166,7 +155,7 @@ export const solution = {
    * with them. Adapted from the Welcome and "What's in the packet" cards.
    * Counts come from content/cards.ts.
    */
-  lead: `The Signal Cards are a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better. Each card shows a face and two words for what you are seeing, like Frustrated / Upset or Noise hurts / Overwhelmed. The set is ${counts.total} cards in two colours of dot, with six instruction cards at the front to show how to begin.`,
+  lead: `Communicate & Connect is a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better. Each card shows a face and two words for what you are seeing, like Frustrated / Upset or Noise hurts / Overwhelmed. The set is ${counts.total} cards in two colours of dot, with six instruction cards at the front to show how to begin.`,
   /** PRD: how a set works. Lifted from "Getting started". */
   stepsHeading: "How a set works",
   steps: [
@@ -517,6 +506,21 @@ export const feedback = {
   lead: "If you have used the cards, this is the most useful thing you can do. Responses are anonymous — no name, no email, no photograph is collected or published.",
   privacyNote:
     "Nothing is published automatically. Shreya reads every response, and only puts a quote on the site if it is useful and anonymous.",
+
+  /**
+   * Shown instead of the form while NEXT_PUBLIC_FEEDBACK_ENDPOINT is not set.
+   * Email is not anonymous (Shreya sees the sender's address), so this copy
+   * must not promise anonymity the way `lead` does.
+   */
+  leadEmail:
+    "If you have used the cards, this is the most useful thing you can do. Send a few lines by email. Whatever you write, nothing goes on the site with your name: quotes are always anonymous.",
+  emailHeading: "Send your feedback by email",
+  emailBody:
+    "Tell Shreya how you used the cards, what happened, and what you would change. She will see your email address, but it is never published.",
+  emailButton: "Write an email",
+  emailSubject: "Feedback on Communicate & Connect",
+  emailTemplate:
+    "How did you use the cards?\n\n\nWhat happened when you used them?\n\n\nWhat would you change?\n\n\nMay Shreya publish an anonymous quote from this? (yes / no)\n",
   fields: {
     role: {
       label: "How did you use the cards?",

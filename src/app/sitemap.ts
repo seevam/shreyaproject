@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@content/site";
 import { getAllPosts, getCategories } from "@/lib/blog";
+import { blogIsLive } from "@/lib/visibility";
 
 export const dynamic = "force-static";
 
@@ -11,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/"), priority: 1 },
     { url: url("/about/") },
     { url: url("/cards/") },
-    { url: url("/blog/") },
+    ...(blogIsLive() ? [{ url: url("/blog/") }] : []),
     { url: url("/feedback/") },
     ...getCategories().map((category) => ({
       url: url(`/blog/category/${category.slug}/`),

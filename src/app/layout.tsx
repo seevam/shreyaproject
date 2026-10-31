@@ -4,6 +4,7 @@ import { site } from "@content/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Providers } from "@/components/Providers";
+import { liveNav } from "@/lib/visibility";
 import "./globals.css";
 
 /**
@@ -59,7 +60,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Providers>
-          <SiteHeader />
+          <SiteHeader items={[...liveNav()]} />
           <main id="main">{children}</main>
           <SiteFooter />
         </Providers>

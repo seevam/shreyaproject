@@ -1,4 +1,4 @@
-# The Cue Cards Initiative
+# Communicate & Connect
 
 The website for Shreya Kochar's cue cards initiative: the cards, the story
 behind them, and evidence of them being used in the real world.
@@ -40,21 +40,39 @@ Two places, and nothing else:
   [`content/blog/README.md`](content/blog/README.md) for how to add one from
   the GitHub website with no tooling installed.
 
-### Unwritten copy is visible, not invisible
+### Unwritten copy is hidden until it is written
 
 Copy that has not been written yet is wrapped in `todo("...")`:
 
 ```ts
-title: todo("hero title, 5 to 7 words"),
+bio: todo("short bio — a few sentences, first person"),
 ```
 
-It renders on the page as an amber **TO WRITE** box naming what is needed, so
-an unfinished section is obvious on the page and cannot be published by
-accident. Replace the whole `todo(...)` call with the real text:
+On the site, a `todo()` renders as **nothing**, so visitors only ever see
+finished content. While writing, run with placeholders switched on to see
+every gap as an amber **TO WRITE** box in place:
+
+```bash
+NEXT_PUBLIC_SHOW_PLACEHOLDERS=1 npm run dev
+```
+
+`npm run content:todo` lists them all either way. To fill one in, replace the
+whole `todo(...)` call with the real text:
 
 ```ts
-title: "The five minutes before bedtime",
+bio: "I'm a high-school student in Chandigarh who …",
 ```
+
+### Sections that appear on their own
+
+Some parts of the site stay hidden until there is real content behind them,
+then switch themselves on (`src/lib/visibility.ts`):
+
+- **Blog.** While every post is a draft, the Blog links, the "Read the blog"
+  buttons and the sitemap entry are hidden. Publish one post
+  (`draft: false`) and they all come back.
+- **Testimonials.** Hidden, with its nav link, until the `testimonials` array
+  in `content/site.ts` has at least one approved quote.
 
 ---
 
@@ -85,8 +103,10 @@ service that accepts a `POST` works — Formspree, Basin, Formcarry:
    environment's variables (and to `.env.local` for local development)
 3. Redeploy
 
-With no endpoint set, the page explains that the form is not connected and
-falls back to the contact email, so it is never a dead end.
+With no endpoint set, the page offers a pre-filled email to
+connectwithshreyakochar@gmail.com instead. Email is not anonymous (Shreya
+sees the sender's address), so in that mode the page says so rather than
+promising anonymity; quotes on the site are still always anonymous.
 
 Approved quotes are then copied by hand into the `testimonials` array in
 `content/site.ts`. Nothing publishes automatically — that is the PRD
@@ -97,7 +117,7 @@ requirement, and it is enforced by there being no automatic path at all.
 ## Design
 
 **Colours** are CSS variables at the top of `src/app/globals.css`, sampled from
-the Signal Cards' Canva deck: the cards' navy for headings, hot pink for
+the cards' Canva deck: the cards' navy for headings, hot pink for
 labels, the purple "grown-up" dot, the yellow "child" dot. No colour is
 hard-coded in a component, so a change there re-skins the whole site.
 
@@ -181,7 +201,7 @@ canonical URLs, the sitemap and the social preview card all read from it.
 ## Where the copy came from
 
 Most of the landing page and the whole cards page were filled in from the
-Signal Cards Canva deck, in Shreya's own wording where the deck already says
+cards' Canva deck, in Shreya's own wording where the deck already says
 it. The About page's origin paragraph is adapted from the Communicate &
 Connect Project Diary. Both sources: the product name, what the cards are, the problem, the how-a-set-works
 steps, the features, and the full "how to use them" guide. Places where the
@@ -197,13 +217,6 @@ visible "To write" boxes.
 `npm run content:todo` lists the copy. These are the ones that are not just
 copy:
 
-- **The product name: "The Signal Cards" or "Communicate & Connect"?** The
-  Canva deck (last edited 11 June) says Signal Cards, so the site uses that.
-  The Project Diary calls the same cards (identical artwork) Communicate &
-  Connect, and so does the **printed box** in the 31 July deployment photo,
-  which points to Communicate & Connect as the real product name. Switching
-  means changing `name` and `shortName` in `content/site.ts`, then rewording
-  the hero and Solution sentences that were lifted from the deck.
 - **The Project Diary's claims need checking before they go public.** It says
   the cards were tested with children, parents, teachers and therapists, and
   that a parent reported an anxious child could now name a feeling and ask for
@@ -218,7 +231,6 @@ copy:
   §2 asks for both; the deck covers neither.
 - **Who Anisha Kochar is, if a line about her is wanted.** She is credited for
   design, exactly as on the last instruction card.
-- **The contact email** for the footer.
 - **The guest author's name** for the "A note for new parents" post, which
   currently credits "Guest post".
 - **The launch date**, which the PRD notes must precede application submission.

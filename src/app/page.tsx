@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
+import { testimonialsAreLive } from "@/lib/visibility";
 import {
   ClosingCta,
   ImpactSection,
@@ -16,7 +17,7 @@ export default function HomePage() {
       <ProblemSection />
       <SolutionSection />
       <ImpactSection />
-      <TestimonialsSection />
+      {testimonialsAreLive() ? <TestimonialsSection /> : null}
       <ClosingCta />
     </>
   );

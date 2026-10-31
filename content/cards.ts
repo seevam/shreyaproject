@@ -1,5 +1,5 @@
 /**
- * The card set, as it appears in the Signal Cards Canva deck.
+ * The Communicate & Connect card set, as it appears in the cards' Canva deck.
  *
  * One entry per grown-up (purple dot) card. Ten of them also exist as a
  * child's (yellow dot) card with the same artwork, marked `childVersion`.

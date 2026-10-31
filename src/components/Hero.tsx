@@ -3,6 +3,7 @@ import { card } from "@content/cards";
 import { ButtonLink, Container, Sticker } from "@/components/ui";
 import { HeroFan } from "@/components/HeroFan";
 import { Reveal } from "@/components/motion";
+import { blogIsLive } from "@/lib/visibility";
 
 /** Splits the title so `titleHighlight` gets the marker-pen treatment. */
 function Title() {
@@ -20,6 +21,9 @@ function Title() {
 
 export function Hero() {
   const [left, centre, right] = hero.fan.map((slug) => card(slug));
+  const secondary = blogIsLive()
+    ? { href: hero.secondaryCtaHref, label: hero.secondaryCtaLabel }
+    : { href: "/about/", label: "Meet Shreya" };
 
   return (
     <section className="bg-dots relative overflow-hidden bg-paper pb-24 pt-14 sm:pb-32 sm:pt-20">
@@ -51,8 +55,8 @@ export function Hero() {
               <ButtonLink href={hero.ctaHref} arrow>
                 {hero.ctaLabel}
               </ButtonLink>
-              <ButtonLink href={hero.secondaryCtaHref} variant="secondary">
-                {hero.secondaryCtaLabel}
+              <ButtonLink href={secondary.href} variant="secondary">
+                {secondary.label}
               </ButtonLink>
             </div>
           </Reveal>

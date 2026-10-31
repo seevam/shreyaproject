@@ -4,7 +4,7 @@ import { CalendarHeart, Heart, Sparkles, Zap } from "lucide-react";
 import { cardsPage, site } from "@content/site";
 import { cards, instructionCard } from "@content/cards";
 import { ButtonLink, Container, DotKey, Section, SectionHeading, Sticker } from "@/components/ui";
-import { Copy } from "@/components/Copy";
+import { Copy, IfWritten } from "@/components/Copy";
 import { CardDeck } from "@/components/CardDeck";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 
@@ -71,9 +71,11 @@ export default function CardsPage() {
             no download link anywhere on this page, and only card FRONTS are
             shown. The note below stays on the page until Shreya confirms.
           */}
-          <div className="mt-10 max-w-prose">
-            <Copy text={cardsPage.note} />
-          </div>
+          <IfWritten text={cardsPage.note}>
+            <div className="mt-10 max-w-prose">
+              <Copy text={cardsPage.note} />
+            </div>
+          </IfWritten>
         </Container>
       </section>
 
