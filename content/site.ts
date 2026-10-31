@@ -99,6 +99,8 @@ export const hero = {
    * is just working in its own unique way."
    */
   title: "Every brain works in its own way",
+  /** Words in the title drawn with a marker-pen highlight. */
+  titleHighlight: "its own way",
   /** Lifted from the Welcome card. */
   description:
     "The Signal Cards are a visual cue deck for children who experience the world a little differently, and the adults who want to understand them better.",
@@ -114,6 +116,8 @@ export const hero = {
    * by setting `photo` below once one exists.
    */
   fan: ["confused", "happy", "angry"],
+  /** Little stickers around the fan. Counts come from content/cards.ts. */
+  stickers: [`${counts.total} cards`, "Purple dot: grown-ups", "Yellow dot: kids"],
   photo: { src: "", alt: "" },
 } as const;
 
@@ -262,15 +266,15 @@ export const impact = {
    * Alt text describes what is visible and names no one.
    */
   fieldGallery: {
-    heading: "From the field",
+    heading: "Where understanding begins",
     intro:
-      "Photographs from a classroom visit on 31 July 2026, with printed sets of the cards.",
+      "Real classrooms, real conversations, and a set of cards that gives children and the adults around them a shared language for what they feel.",
     photos: [
       {
         src: "/images/field/printed-box.webp",
         width: 900,
         height: 1200,
-        alt: "Two women stand against a wall. One holds up a boxed set of the cards, printed with the title Communicate & Connect.",
+        alt: "Shreya Kochar, right, stands beside a woman holding up a boxed set of the cards, printed with the title Communicate & Connect.",
         caption: "The printed set, in hand",
       },
       {
@@ -284,7 +288,7 @@ export const impact = {
         src: "/images/field/cards-on-the-desk.webp",
         width: 900,
         height: 1200,
-        alt: "A group of people sit around a classroom desk with cards from the set spread out on it.",
+        alt: "Shreya Kochar, centre, sits with a group around a classroom desk with cards from the set spread out on it.",
         caption: "Cards spread out on the desk",
       },
       {
@@ -367,8 +371,9 @@ export const about = {
   ),
   /** PRD §5.2: includes one photograph and a short bio. */
   photo: {
-    src: "",
-    alt: todo("alt text for the photograph of Shreya"),
+    /** Cropped from the 31 July 2026 field photo (source-photos/468f6f9d…). */
+    src: "/images/brand/shreya.webp",
+    alt: "Shreya Kochar, smiling, in a white T-shirt.",
   },
   bio: todo("short bio — a few sentences, first person"),
   whereItsHeaded: {

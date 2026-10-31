@@ -9,7 +9,7 @@ export function BlogSidebar() {
   if (categories.length === 0) return null;
 
   return (
-    <aside className="space-y-10">
+    <aside className="h-fit space-y-10 rounded-card border-2 border-navy bg-sun-soft p-6 shadow-pop">
       <nav aria-labelledby="categories-heading">
         <h2
           id="categories-heading"

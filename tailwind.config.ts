@@ -36,7 +36,33 @@ const config: Config = {
         prose: "68ch",
       },
       borderRadius: {
-        card: "0.875rem",
+        card: "1.25rem",
+        blob: "42% 58% 63% 37% / 41% 44% 56% 59%",
+      },
+      boxShadow: {
+        // Hard offset "sticker" shadows in the cards' navy.
+        pop: "4px 4px 0 0 var(--color-navy)",
+        "pop-sm": "3px 3px 0 0 var(--color-navy)",
+        "pop-lg": "7px 7px 0 0 var(--color-navy)",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        floaty: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 45s linear infinite",
+        floaty: "floaty 6s ease-in-out infinite",
+        wiggle: "wiggle 2.5s ease-in-out infinite",
       },
     },
   },

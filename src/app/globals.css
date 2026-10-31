@@ -64,6 +64,7 @@ html {
 
 body {
   background-color: var(--color-paper);
+  overflow-x: hidden; /* decorative blobs bleed past the edges on purpose */
   color: var(--color-ink);
   /* PRD §7: minimum 16px body text. */
   font-size: 1rem;
@@ -137,4 +138,57 @@ body {
   padding: 0.1em 0.35em;
   border-radius: 0.25rem;
   font-size: 0.9em;
+}
+
+/* --- Playful layer -------------------------------------------------------- */
+
+/* Marker-pen highlight behind key words. Wraps cleanly across lines. */
+.marker {
+  background-image: linear-gradient(
+    transparent 58%,
+    var(--color-sun) 58%,
+    var(--color-sun) 90%,
+    transparent 90%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.08em;
+}
+.marker-pink {
+  background-image: linear-gradient(
+    transparent 58%,
+    var(--color-accent-soft) 58%,
+    var(--color-accent-soft) 90%,
+    transparent 90%
+  );
+}
+
+/* Faint dot grid, a nod to the dot on every card. */
+.bg-dots {
+  background-image: radial-gradient(var(--color-line) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* Polaroid tape strip. */
+.tape::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: color-mix(in srgb, var(--color-sun) 70%, transparent);
+  border-radius: 3px;
+  z-index: 1;
+}
+
+/* Anything animated by CSS stops for people who ask for less motion.
+   (JS animation is handled by <MotionConfig reducedMotion="user">.) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-floaty,
+  .animate-wiggle {
+    animation: none !important;
+  }
 }

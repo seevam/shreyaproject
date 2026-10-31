@@ -1,7 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import confetti from "canvas-confetti";
+import { PartyPopper, Send } from "lucide-react";
 import { feedback, site } from "@content/site";
+import { buttonClasses } from "@/components/ui";
+
+/** A short burst in the cards' colours. Skipped for "reduce motion". */
+function celebrate() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  confetti({
+    particleCount: 140,
+    spread: 80,
+    origin: { y: 0.65 },
+    colors: ["#a666f5", "#febc0d", "#f252b4", "#11468f", "#90c50f"],
+    disableForReducedMotion: true,
+  });
+}
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -28,6 +43,7 @@ export function FeedbackForm() {
       });
       if (!response.ok) throw new Error(`Request failed: ${response.status}`);
       setStatus("sent");
+      celebrate();
     } catch {
       setStatus("error");
     }
@@ -35,12 +51,13 @@ export function FeedbackForm() {
 
   if (status === "sent") {
     return (
-      <p
+      <div
         role="status"
-        className="rounded-card border border-line bg-secondary-soft p-6 text-lg text-ink"
+        className="rotate-[-1deg] rounded-card border-2 border-navy bg-sun-soft p-7 shadow-pop-lg"
       >
-        {feedback.successMessage}
-      </p>
+        <PartyPopper aria-hidden="true" className="mb-3 h-9 w-9 text-accent-strong" strokeWidth={2.25} />
+        <p className="font-display text-2xl font-semibold text-navy">{feedback.successMessage}</p>
+      </div>
     );
   }
 
@@ -88,8 +105,9 @@ export function FeedbackForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center rounded-full bg-navy px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-strong disabled:opacity-60"
+        className={`${buttonClasses("primary")} disabled:opacity-60`}
       >
+        <Send aria-hidden="true" className="h-4 w-4" />
         {status === "sending" ? "Sending…" : feedback.submitLabel}
       </button>
     </form>
@@ -111,11 +129,11 @@ function Field({
 }) {
   const helpId = `${name}-help`;
   const classes =
-    "mt-2 w-full rounded-lg border border-line-strong bg-surface px-4 py-3 text-base text-ink placeholder:text-muted";
+    "mt-2 w-full rounded-2xl border-2 border-navy bg-surface px-4 py-3 text-base text-ink shadow-pop-sm transition-shadow placeholder:text-muted focus:shadow-pop";
 
   return (
     <div>
-      <label htmlFor={name} className="block text-base font-semibold text-ink">
+      <label htmlFor={name} className="block font-display text-lg font-semibold text-navy">
         {label}
         {required ? (
           <span className="ml-1 text-accent-strong" aria-hidden="true">

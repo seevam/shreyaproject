@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fredoka, Nunito } from "next/font/google";
 import { site } from "@content/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 /**
  * PRD §7: two typefaces maximum, one for headings and one for body.
- * Fraunces for display, Inter for body. Both are loaded through next/font, so
- * they are self-hosted at build time — no request to Google from the browser.
+ * Fredoka (rounded, friendly) for display; Nunito (rounded, very readable)
+ * for body. Both self-hosted at build time via next/font.
  */
-const display = Fraunces({
+const display = Fredoka({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  axes: ["SOFT", "WONK"],
 });
 
-const body = Inter({
+const body = Nunito({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -58,9 +58,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SiteHeader />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        <Providers>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </Providers>
       </body>
     </html>
   );

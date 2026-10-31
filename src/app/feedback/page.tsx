@@ -15,16 +15,16 @@ export default function FeedbackPage() {
   const hasEmail = !isTodo(site.contactEmail);
 
   return (
-    <article className="py-16 sm:py-24">
+    <article className="bg-dots relative overflow-hidden pb-24 pt-14 sm:pt-20">
       <Container>
         <div className="max-w-prose">
-          <h1 className="font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">
+          <h1 className="font-display text-5xl font-semibold leading-[1.05] text-navy sm:text-6xl">
             {feedback.title}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ink">
             {feedback.lead}
           </p>
-          <p className="mt-4 rounded-card border border-line bg-surface p-5 text-base leading-relaxed text-muted">
+          <p className="mt-6 rotate-[-0.75deg] rounded-card border-2 border-navy bg-sun-soft p-5 text-base leading-relaxed text-ink shadow-pop">
             {feedback.privacyNote}
           </p>
 
@@ -32,7 +32,7 @@ export default function FeedbackPage() {
             {hasEndpoint ? (
               <FeedbackForm />
             ) : (
-              <div className="rounded-card border border-dashed border-line bg-surface p-6">
+              <div className="rounded-card border-2 border-dashed border-navy bg-surface p-6">
                 <h2 className="text-lg font-semibold text-ink">
                   The form is not connected yet
                 </h2>

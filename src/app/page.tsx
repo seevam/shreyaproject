@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
 import {
   ClosingCta,
   ImpactSection,
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Marquee />
       <ProblemSection />
       <SolutionSection />
       <ImpactSection />

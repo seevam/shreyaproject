@@ -10,7 +10,11 @@
     "content:todo": "node scripts/check-content.mjs"
   },
   "dependencies": {
+    "canvas-confetti": "^1.9.4",
+    "clsx": "^2.1.1",
     "gray-matter": "4.0.3",
+    "lucide-react": "^1.66.0",
+    "motion": "^14.9.0",
     "next": "^16.3.4",
     "react": "19.1.1",
     "react-dom": "19.1.1",
@@ -19,6 +23,7 @@
     "remark-html": "16.0.1"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "22.10.2",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",

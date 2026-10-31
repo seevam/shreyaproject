@@ -107,9 +107,23 @@ only, and a darkened pink is used for text and links. The dots always sit
 beside a text label, never carrying meaning by colour alone. Keep any
 replacement at 4.5:1 or better for text, 3:1 for borders and controls.
 
-**Typefaces** are Fraunces for headings and Inter for body — two, per the PRD.
-They are set in `src/app/layout.tsx` and self-hosted at build time, so the
-browser never calls Google.
+**Typefaces** are Fredoka (rounded) for headings and Nunito for body — two,
+per the PRD. They are set in `src/app/layout.tsx` and self-hosted at build
+time, so the browser never calls Google.
+
+**Look and motion.** The style is deliberately playful, to match the cards:
+chunky navy outlines with hard "sticker" shadows (`shadow-pop`), tilted cards
+that straighten on hover, soft colour blobs, wavy section edges, and a
+marker-pen highlight (`.marker`) on key words. Animation uses the `motion`
+library: the hero cards are dealt in and tilt toward the pointer (and can be
+dragged), sections rise in as they scroll into view (`Reveal`, `Stagger` in
+`src/components/motion.tsx`), and the card gallery filters and shuffles with
+animated reflow (`CardDeck.tsx`). Icons are from `lucide-react`; the feedback
+form fires `canvas-confetti` on success.
+
+All of it respects "reduce motion": JS animation via
+`<MotionConfig reducedMotion="user">` in `Providers.tsx`, CSS animation via a
+media query in `globals.css`, and the confetti checks the setting itself.
 
 **Images.** The 20 card fronts in `public/images/cards/` and the instruction
 card in `public/images/brand/` come from two sources. Seven fronts (happy,
@@ -141,7 +155,8 @@ the students' guardians are happy for each one to be public. Note that this
 GitHub repository is public, so the originals are already downloadable from it
 until it is made private or the photos are removed from history.
 
-Still empty: `about.photo` (a photograph of Shreya) and `hero.photo` (optional,
+`about.photo` is Shreya, cropped from the same field photo
+(`public/images/brand/shreya.webp`). Still empty: `hero.photo` (optional,
 replaces the card fan). They hold their shape with a labelled placeholder
 frame until a photograph is added.
 

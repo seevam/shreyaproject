@@ -5,22 +5,22 @@ import { categorySlug } from "@/lib/blog";
 export function PostList({ posts }: { posts: PostMeta[] }) {
   if (posts.length === 0) {
     return (
-      <p className="rounded-card border border-dashed border-line bg-surface p-6 text-base text-muted">
+      <p className="rounded-card border-2 border-dashed border-navy bg-surface p-6 text-base text-muted">
         No posts here yet.
       </p>
     );
   }
 
   return (
-    <ul className="space-y-8">
+    <ul className="space-y-6">
       {posts.map((post) => (
-        <li key={post.slug} className="border-b border-line pb-8 last:border-b-0">
+        <li key={post.slug} className="rounded-card border-2 border-navy bg-surface p-6 shadow-pop transition-transform hover:-translate-y-1">
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
             <time dateTime={post.isoDate}>{post.date}</time>
             <span aria-hidden="true">·</span>
             <Link
               href={`/blog/category/${categorySlug(post.category)}/`}
-              className="font-medium text-accent-strong hover:underline"
+              className="rounded-full bg-accent-soft px-2.5 py-0.5 font-bold text-accent-strong hover:underline"
             >
               {post.category}
             </Link>

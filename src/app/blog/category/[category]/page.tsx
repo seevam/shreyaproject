@@ -39,13 +39,13 @@ export default async function CategoryPage({
   const posts = getAllPosts().filter((post) => post.category === match.name);
 
   return (
-    <article className="py-16 sm:py-24">
+    <article className="bg-dots relative overflow-hidden pb-24 pt-14 sm:pt-20">
       <Container>
         <div className="max-w-prose">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-accent-strong">
             Category
           </p>
-          <h1 className="mt-2 font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">
+          <h1 className="mt-2 font-display text-5xl font-semibold leading-[1.05] text-navy sm:text-6xl">
             {match.name}
           </h1>
           <p className="mt-4 text-base text-muted">
