@@ -38,8 +38,16 @@ export const site = {
    * product name"). The Canva deck is titled "The Signal Cards" and the cards
    * refer to themselves by that name, so it is used here. BUT the Project
    * Diary export calls the same cards "Communicate & Connect". The artwork is
-   * identical, so these look like two names for one product; which is current
-   * is for Shreya to say. Change `name` and `shortName` to switch.
+   * identical, so these look like two names for one product.
+   *
+   * EVIDENCE THAT MAY SETTLE IT: in the 31 July 2026 deployment photo
+   * public/images/field/printed-box.webp, the PRINTED BOX reads
+   * "Communicate & Connect". The Canva deck was last edited 11 June 2026, so
+   * the printed product post-dates it. The site and the physical product are
+   * meant to read as one thing (PRD §7), which points to Communicate &
+   * Connect. Not switched without Shreya's say-so: the hero and Solution copy
+   * are lifted from the deck and say "The Signal Cards are...", and would need
+   * a pass. Change `name` and `shortName` here, then those two sentences.
    */
   name: "The Signal Cards",
   shortName: "Signal Cards",
@@ -204,7 +212,7 @@ export const impact = {
       label: "In the field",
       title: "Printed and in use with a nonprofit in India",
       body: todo(
-        "which nonprofit, where, how many cards were printed, roughly how many people used them, and over what period",
+        "which nonprofit and where, how many cards were printed, and roughly how many people used them. The photos below are from 31 July 2026, so that date can go here",
       ),
       status: "Ongoing",
       /** Photos from the deployment. Add files to public/images/ then list them here. */
@@ -231,6 +239,70 @@ export const impact = {
       photos: [] as { src: string; alt: string }[],
     },
   ],
+
+  /**
+   * PRD §6.2: "Photo gallery from the nonprofit deployment."
+   *
+   * SOURCE: photos uploaded to public/images/ on the working branch, all
+   * stamped 31 July 2026 in their metadata (two sessions that afternoon).
+   * Web copies live in public/images/field/ — resized and stripped of
+   * metadata. The untouched originals are in source-photos/, which the site
+   * does not serve.
+   *
+   * CONSENT. These show identifiable people, including students at the
+   * partner organisation. Before launch, confirm the organisation and the
+   * students' guardians are happy for each photo to be public. Delete an
+   * entry below to remove a photo from the site.
+   *
+   * Left out on purpose: close-ups of individual students, photos showing the
+   * organisation's name on signage, a photo of a student's notebook, two
+   * birthday photos, two chess games, and near-duplicates.
+   *
+   * Captions are placeholders in a neutral voice. Shreya should rewrite them.
+   * Alt text describes what is visible and names no one.
+   */
+  fieldGallery: {
+    heading: "From the field",
+    intro:
+      "Photographs from a classroom visit on 31 July 2026, with printed sets of the cards.",
+    photos: [
+      {
+        src: "/images/field/printed-box.webp",
+        width: 900,
+        height: 1200,
+        alt: "Two women stand against a wall. One holds up a boxed set of the cards, printed with the title Communicate & Connect.",
+        caption: "The printed set, in hand",
+      },
+      {
+        src: "/images/field/volunteers-with-cards.webp",
+        width: 1200,
+        height: 900,
+        alt: "A group of young women stand together in a classroom, several holding up cards from the set.",
+        caption: "Volunteers with their cards",
+      },
+      {
+        src: "/images/field/cards-on-the-desk.webp",
+        width: 900,
+        height: 1200,
+        alt: "A group of people sit around a classroom desk with cards from the set spread out on it.",
+        caption: "Cards spread out on the desk",
+      },
+      {
+        src: "/images/field/one-to-one.webp",
+        width: 1200,
+        height: 900,
+        alt: "Two people sit side by side at a classroom desk, talking, with a box of cards on the desk between them.",
+        caption: "One-to-one with the cards",
+      },
+      {
+        src: "/images/field/group-in-classroom.webp",
+        width: 900,
+        height: 1200,
+        alt: "A group of students and visitors posed together in a classroom.",
+        caption: "The group on the day",
+      },
+    ],
+  },
 } as const;
 
 // ---------------------------------------------------------------------------

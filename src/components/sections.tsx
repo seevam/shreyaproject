@@ -184,6 +184,37 @@ export function ImpactSection() {
           </article>
         ))}
       </div>
+
+      <div className="mt-16">
+        <h3 className="font-display text-2xl font-semibold text-navy">
+          {impact.fieldGallery.heading}
+        </h3>
+        <p className="mt-3 max-w-prose text-base leading-relaxed text-muted">
+          {impact.fieldGallery.intro}
+        </p>
+
+        {/* Columns, not a grid: photos are a mix of portrait and landscape and
+            this shows each one uncropped, so nobody's face is cut off. */}
+        <ul className="mt-8 columns-1 gap-5 sm:columns-2 lg:columns-3">
+          {impact.fieldGallery.photos.map((photo) => (
+            <li key={photo.src} className="mb-5 break-inside-avoid">
+              <figure className="overflow-hidden rounded-card border border-line bg-surface">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  loading="lazy"
+                  className="h-auto w-full"
+                />
+                <figcaption className="px-4 py-3 text-sm text-muted">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
   );
 }

@@ -126,8 +126,23 @@ text, and there are no downloadable card files anywhere (PRD §5.4).
 The card list, names and alt text live in `content/cards.ts`; the gallery, the
 hero and every "20 cards / 10 cards" figure are derived from it.
 
-Still empty: `about.photo`, `hero.photo` (optional, replaces the card fan) and
-`impact.items[].photos` — they hold their shape with a labelled placeholder
+**Field photos.** Five photographs from a classroom visit on 31 July 2026 (the
+date is in their metadata) appear under "From the field" on the landing page.
+They are listed in `impact.fieldGallery` in `content/site.ts`; delete an entry
+to remove a photo. The web copies in `public/images/field/` are resized and
+have their metadata stripped. The untouched originals, including the ones not
+used, are in `source-photos/`, which the site does not serve. Left out on
+purpose: close-ups of individual students, photos where the organisation's
+name is legible on signage, a student's notebook, and near-duplicates.
+
+**These photos need consent before launch.** They show identifiable people,
+including students at the partner organisation. Confirm the organisation and
+the students' guardians are happy for each one to be public. Note that this
+GitHub repository is public, so the originals are already downloadable from it
+until it is made private or the photos are removed from history.
+
+Still empty: `about.photo` (a photograph of Shreya) and `hero.photo` (optional,
+replaces the card fan). They hold their shape with a labelled placeholder
 frame until a photograph is added.
 
 ---
@@ -168,9 +183,12 @@ visible "To write" boxes.
 copy:
 
 - **The product name: "The Signal Cards" or "Communicate & Connect"?** The
-  Canva deck and the cards' own text say Signal Cards, so that is what the site
-  uses. The Project Diary calls the same cards (identical artwork) Communicate
-  & Connect. Change `name` and `shortName` in `content/site.ts` to switch.
+  Canva deck (last edited 11 June) says Signal Cards, so the site uses that.
+  The Project Diary calls the same cards (identical artwork) Communicate &
+  Connect, and so does the **printed box** in the 31 July deployment photo,
+  which points to Communicate & Connect as the real product name. Switching
+  means changing `name` and `shortName` in `content/site.ts`, then rewording
+  the hero and Solution sentences that were lifted from the deck.
 - **The Project Diary's claims need checking before they go public.** It says
   the cards were tested with children, parents, teachers and therapists, and
   that a parent reported an anxious child could now name a feeling and ask for
