@@ -22,6 +22,16 @@ export default function AboutPage() {
               <Copy text={about.lead} />
             </div>
 
+            <div className="prose-body mt-6">
+              <blockquote>
+                <p>{about.principle}</p>
+              </blockquote>
+            </div>
+
+            <div className="prose-body mt-6 text-ink">
+              <Copy text={about.originGap} />
+            </div>
+
             <h2 className="mt-12 font-display text-2xl font-semibold text-navy">
               {about.whereItsHeaded.heading}
             </h2>

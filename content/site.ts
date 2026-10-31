@@ -35,9 +35,11 @@ export const isTodo = (value: string) => value.trimStart().startsWith(TODO_OPEN)
 export const site = {
   /**
    * PRODUCT / SITE NAME. PRD §7 left this open ("the site name will match the
-   * product name"). The deck is titled "The Signal Cards" and the cards refer
-   * to themselves by that name, so it is used here. Change `name` and
-   * `shortName` if the name is revisited.
+   * product name"). The Canva deck is titled "The Signal Cards" and the cards
+   * refer to themselves by that name, so it is used here. BUT the Project
+   * Diary export calls the same cards "Communicate & Connect". The artwork is
+   * identical, so these look like two names for one product; which is current
+   * is for Shreya to say. Change `name` and `shortName` to switch.
    */
   name: "The Signal Cards",
   shortName: "Signal Cards",
@@ -278,8 +280,18 @@ export const closingCta = {
 
 export const about = {
   title: "About",
-  lead: todo(
-    "origin story — what prompted Shreya to build the cards. First person. PRD §5.2",
+  /**
+   * Adapted: first person, from Phase 1 of the "Communicate & Connect"
+   * Project Diary (HTML export). CONFIRM it is Shreya's own writing before
+   * publishing. The diary gives her METHOD (starting from memory) but not the
+   * TRIGGER, which is what PRD §5.2 asks for, so that stays a to-do below.
+   */
+  lead: "I did not start with psychology textbooks or research studies. I started with memory. I asked myself which emotions I struggled with most as a child, and when I felt confused, overwhelmed, stuck, or lost. Those answers became the first cards.",
+  /** Adapted: the diary's Phase 1 "breakthrough". Matches the cards' own "that feeling is real and valid". */
+  principle:
+    "Emotions are not good or bad, right or wrong. They are information: valid, important information that children need to understand and process.",
+  originGap: todo(
+    "the specific moment, person or observation that made you decide to turn this into a set of cards. The Project Diary describes how you worked but not what started it. PRD §5.2",
   ),
   /** PRD §5.2: includes one photograph and a short bio. */
   photo: {

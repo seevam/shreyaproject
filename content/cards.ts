@@ -10,9 +10,14 @@
  * backs, which carry the full guidance text, are deliberately not shown — see
  * PRD §5.4 and the copyright caution from the 19 June session.
  *
- * Source: the 536px page thumbnails returned by the Canva connector. Replace
- * the files in public/images/cards/ with full-resolution exports (keep the
- * filenames) and the whole site sharpens up with no code change.
+ * Sources, in two resolutions:
+ *  - happy, neutral, angry, confused, uncomfortable, sad, frustrated: 424x620
+ *    (2x the display size), from the full-size card images in the Project
+ *    Diary HTML export.
+ *  - the other 13: 212x310 (1x), cropped from the 536px Canva page thumbnails.
+ * Replace any file in public/images/cards/ with a larger export (keep the
+ * filename and the 212:310 proportions) and the site sharpens with no code
+ * change.
  */
 
 export type Card = {

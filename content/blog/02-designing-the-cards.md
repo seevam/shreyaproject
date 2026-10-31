@@ -22,4 +22,17 @@ draft: true
 
   Photographs of drafts and rejected versions belong here. Put image files in
   public/images/ and reference them as ![alt text](/images/filename.jpg)
+
+  FROM THE PROJECT DIARY (Phases 2 to 4):
+  - Each card has to do three jobs in very little space: say what the feeling
+    means, say what to say or do, and give something to practise.
+  - The big design decision: children and adults understand feelings
+    differently, so there are two versions of a card. Purple dot for the
+    grown-up, yellow dot for the child, same picture. Explain why, in your
+    own words, with an example of one card in both versions.
+  - Colour: the diary says colours were chosen to feel right for each emotion
+    (warmer for comfort, brighter for energy and attention). Say what you
+    actually did for two or three specific cards.
+  - The hard problem you named: explaining feelings in words a child
+    understands while still giving the adult something genuinely useful.
 -->

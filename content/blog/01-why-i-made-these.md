@@ -21,4 +21,15 @@ draft: true
   Aim for 600–900 words. First person. It should sound like you, not like a
   product page — a reader should finish it knowing what you noticed and why you
   could not leave it alone.
+
+  FROM THE PROJECT DIARY (Phase 1) — the spine of this post is already there:
+  - You started from memory, not textbooks: "What emotions did I struggle
+    with most as a child? When did I feel confused, overwhelmed, stuck, or
+    lost?"
+  - You could not make a card for every emotion, so you narrowed down to the
+    ones that came up most.
+  - The idea that shaped everything: emotions are not good or bad, they are
+    information. A strong place to end.
+  Still missing, and it is the heart of the post: the specific moment that
+  made you act. The diary gives the method, not the trigger.
 -->

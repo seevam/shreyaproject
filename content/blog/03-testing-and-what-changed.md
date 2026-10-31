@@ -18,4 +18,16 @@ draft: true
     six cards because people read them as instructions" is worth more than
     "I refined the design".
   - Be honest about anything that still does not work.
+
+  FROM THE PROJECT DIARY (Phase 5) — CHECK BEFORE USING:
+  The diary says the cards were tested with children of different ages,
+  parents, teachers, therapists and families, that some cards were fully
+  redesigned and some descriptions rewritten many times, and that a parent
+  reported their anxious child could now name a feeling and ask for help.
+  These are strong claims, and this blog is going to admissions readers.
+  Only write what actually happened, as specifically as you can: who, how
+  many, what you changed. If a claim is not something you can back up, leave
+  it out. If the parent story is real, tell it as a story, without names, and
+  with their permission; it is not a testimonial and should not be added to
+  the testimonials section unless they submit it through the form.
 -->
